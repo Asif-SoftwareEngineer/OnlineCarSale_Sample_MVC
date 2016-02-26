@@ -1,0 +1,209 @@
+﻿@model OnlineCarsDemo.Models.Car
+
+@{
+    ViewBag.Title = "Car Profile";
+    OnlineCarsDemo.Models.UserEnquiry modelUE = new OnlineCarsDemo.Models.UserEnquiry();
+    modelUE.ID = Model.ID;
+}
+
+
+@{ 
+    var showHidePOA = "";
+    var showHideDAP = "";
+    var showHideEGC = "";
+
+    if (@Model.PriceType == "POA")
+    {
+        showHidePOA = "show";
+    }
+    else
+    {
+        showHidePOA = "hide";
+    }
+
+    if (@Model.PriceType == "DAP")
+    {
+        showHideDAP = "show";
+    }
+    else
+    {
+        showHideDAP = "hide";
+    }
+
+
+    if (@Model.PriceType == "EGC")
+    {
+        showHideEGC = "show";
+    }
+    else
+    {
+        showHideEGC = "hide";
+    }
+}
+
+
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><strong>@Model.Make <small>(@Model.Model)</small></strong></h3>
+    </div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div>
+                    <img src=@Url.Content(String.Format("~/{0}", @Model.ImageURL)) class="img-responsive img-rounded" alt="no-img" style="margin-top:10px;margin-bottom:10px;border-color:beige;border-style:solid;border-width:thin" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <p>
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" class="active"><a data-toggle="tab" href="#SPEC">Specifications</a></li>
+                <li role="presentation"><a data-toggle="tab" href="#OE">Online Enquiry</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="SPEC" class="tab-pane fade in active">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Model)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Model)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Make)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Make)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Year)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Year)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.PriceType)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.PriceType)
+                        </dd>
+
+                        <dt class="@showHidePOA">
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
+
+                        <dd class="@showHidePOA">
+                            @Html.DisplayFor(model => model.Price)
+                        </dd>
+
+                        <dt class="@showHideDAP">
+                            Price
+                        </dt>
+
+                        <dd class="@showHideDAP">
+                            @Html.DisplayFor(model => model.DapPrice)  &nbsp; &nbsp; <small>(Drive Away)</small>
+                        </dd>
+
+                        <dt class="@showHideEGC">
+                            Price
+                        </dt>
+
+                        <dd class="@showHideEGC">
+                            @Html.DisplayFor(model => model.EGCPrice) &nbsp; &nbsp; <small>(Excluding Government Charges)</small>
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ContactName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ContactName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Phone)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DealerABN)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DealerABN)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Comments)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Comments)
+                        </dd>
+
+                    </dl>
+                </div>
+
+
+                
+                <div id="OE" class="tabl-pane fade"><br />
+                    @Html.Partial("_Enquiry", modelUE)
+
+                    @*<form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Name" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputName" name="name" placeholder="Your Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Submit Enquiry</button>
+                            </div>
+                        </div>
+                    </form>*@
+                </div>
+
+
+       </div>
+    </div>
+</div>
+    </div>
+

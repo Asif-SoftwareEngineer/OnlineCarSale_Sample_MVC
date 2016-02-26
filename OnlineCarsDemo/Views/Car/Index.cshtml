@@ -1,0 +1,60 @@
+﻿@model IEnumerable<OnlineCarsDemo.Models.Car>
+
+@{
+    ViewBag.Title = "Online Cars";
+}
+
+<h2><strong>Cars on offer for Sale</strong></h2>
+<hr />
+
+<div class="container">
+
+
+    @foreach (var item in Model)
+    {
+        <div class="row" style="border-color:beige;border-style:solid; border-width:thin; margin-top:5px;margin-bottom:5px;">
+            <div class="col-xs-12 col-sm-9 col-md-9">
+                <div style="height:200px;width:300px">
+                    <img src=@item.ImageURL class="img-responsive img-rounded" alt="no-img" style="margin-top:10px;margin-bottom:10px;border-color:beige;border-style:solid;border-width:thin" />
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <dl id="mainPage" class="dl-horizontal" style="text-align:left">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Model)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => item.Model)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Make)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => item.Make)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Year)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => item.Year)
+                    </dd>
+
+               </dl>
+            <p>
+                    <strong>@Html.ActionLink("Details", "details", new { id = @item.ID })</strong>
+            </p>
+
+</div>
+
+        </div>
+    }
+
+</div>
+
